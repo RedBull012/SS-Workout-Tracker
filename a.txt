@@ -1,0 +1,92 @@
+.
+├── a.txt
+├── HELP.md
+├── mvnw
+├── mvnw.cmd
+├── PLANNING.md
+├── pom.xml
+├── README.md
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── startingstrength
+│   │   │               ├── controllers
+│   │   │               │   ├── ExerciseController.java
+│   │   │               │   ├── WorkoutController.java
+│   │   │               │   └── WorkoutExerciseController.java
+│   │   │               ├── dto
+│   │   │               │   ├── WorkoutExerciseRequest.java
+│   │   │               │   └── WorkoutExerciseResponse.java
+│   │   │               ├── exceptions
+│   │   │               │   ├── GlobalExceptionHandler.java
+│   │   │               │   └── ResourceNotFoundException.java
+│   │   │               ├── models
+│   │   │               │   ├── Exercise.java
+│   │   │               │   ├── Workout.java
+│   │   │               │   └── WorkoutExercise.java
+│   │   │               ├── repositories
+│   │   │               │   ├── ExerciseRepo.java
+│   │   │               │   ├── WorkoutExerciseRepo.java
+│   │   │               │   └── WorkoutRepo.java
+│   │   │               ├── services
+│   │   │               │   ├── ExerciseService.java
+│   │   │               │   ├── WorkoutExerciseService.java
+│   │   │               │   └── WorkoutService.java
+│   │   │               └── StartingStrengthApplication.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── static
+│   │       └── templates
+│   └── test
+│       └── java
+│           └── com
+│               └── example
+│                   └── startingstrength
+│                       └── StartingStrengthApplicationTests.java
+├── target
+│   ├── classes
+│   │   ├── application.properties
+│   │   └── com
+│   │       └── example
+│   │           └── startingstrength
+│   │               ├── controllers
+│   │               │   ├── ExerciseController.class
+│   │               │   ├── WorkoutController.class
+│   │               │   └── WorkoutExerciseController.class
+│   │               ├── dto
+│   │               │   ├── WorkoutExerciseRequest.class
+│   │               │   └── WorkoutExerciseResponse.class
+│   │               ├── exceptions
+│   │               │   ├── GlobalExceptionHandler.class
+│   │               │   └── ResourceNotFoundException.class
+│   │               ├── models
+│   │               │   ├── Exercise.class
+│   │               │   ├── Workout.class
+│   │               │   └── WorkoutExercise.class
+│   │               ├── repositories
+│   │               │   ├── ExerciseRepo.class
+│   │               │   ├── WorkoutExerciseRepo.class
+│   │               │   └── WorkoutRepo.class
+│   │               ├── services
+│   │               │   ├── ExerciseService.class
+│   │               │   ├── WorkoutExerciseService.class
+│   │               │   └── WorkoutService.class
+│   │               └── StartingStrengthApplication.class
+│   ├── generated-sources
+│   │   └── annotations
+│   ├── generated-test-sources
+│   │   └── test-annotations
+│   └── test-classes
+│       └── com
+│           └── example
+│               └── startingstrength
+│                   └── StartingStrengthApplicationTests.class
+└── tmp
+    ├── Set.java
+    ├── SetController.java
+    ├── SetRepo.java
+    └── SetService.java
+
+41 directories, 49 files
