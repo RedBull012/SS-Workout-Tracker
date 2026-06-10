@@ -6,6 +6,7 @@ target/
 
 ### ENV ###
 .env
+src/main/resources/application.properties
 
 ### STS ###
 .apt_generated
