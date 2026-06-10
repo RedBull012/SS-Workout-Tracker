@@ -58,4 +58,11 @@ public class WorkoutExerciseController {
     public ResponseEntity<List<WorkoutExerciseResponse>> getProgressForExercise(@PathVariable Long exerciseId) {
         return ResponseEntity.ok(service.getProgressForExercise(exerciseId));
     }
+
+    @GetMapping("/exercises/{exerciseId}/last")
+    public ResponseEntity<WorkoutExerciseResponse> getLastSession(@PathVariable Long exerciseId) {
+        return service.getLastSessionForExercise(exerciseId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.noContent().build());
+    }
 }
