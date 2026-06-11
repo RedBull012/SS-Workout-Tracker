@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Setter
 public class WorkoutExerciseResponse {
     private Long id;
+    private Long exerciseId;
     private String exerciseName;
     private Integer sets;
     private Integer reps;

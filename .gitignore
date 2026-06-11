@@ -7,6 +7,7 @@ target/
 ### ENV ###
 .env
 src/main/resources/application.properties
+.claude
 
 ### STS ###
 .apt_generated

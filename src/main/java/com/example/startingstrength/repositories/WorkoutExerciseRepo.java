@@ -17,6 +17,6 @@ public interface WorkoutExerciseRepo extends JpaRepository<WorkoutExercise, Long
         @Query("SELECT we FROM WorkoutExercise we WHERE we.exercise.id = :exerciseId AND we.workout.user.username = :username ORDER BY we.workout.date ASC")
         List<WorkoutExercise> findByExerciseIdAndUsernameOrderByDate(@Param("exerciseId") Long exerciseId, @Param("username") String username);
 
-        @Query("SELECT we FROM WorkoutExercise we WHERE we.exercise.id = :exerciseId AND we.workout.user.username = :username ORDER BY we.workout.date DESC LIMIT 1")
+        @Query("SELECT we FROM WorkoutExercise we WHERE we.exercise.id = :exerciseId AND we.workout.user.username = :username AND we.weight IS NOT NULL ORDER BY we.workout.date DESC LIMIT 1")
         Optional<WorkoutExercise> findLastByExerciseIdAndUsername(@Param("exerciseId") Long exerciseId, @Param("username") String username);
 }

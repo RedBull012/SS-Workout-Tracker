@@ -34,6 +34,7 @@ public class WorkoutExerciseService {
     private WorkoutExerciseResponse toResponse(WorkoutExercise workoutExercise) {
         WorkoutExerciseResponse response = new WorkoutExerciseResponse();
         response.setId(workoutExercise.getWorkoutExerciseId());
+        response.setExerciseId(workoutExercise.getExercise().getId());
         response.setExerciseName(workoutExercise.getExercise().getName());
         response.setSets(workoutExercise.getSets());
         response.setReps(workoutExercise.getReps());
