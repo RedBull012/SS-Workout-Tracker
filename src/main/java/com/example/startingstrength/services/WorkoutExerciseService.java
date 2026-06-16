@@ -10,9 +10,11 @@ import com.example.startingstrength.models.WorkoutExercise;
 import com.example.startingstrength.repositories.ExerciseRepo;
 import com.example.startingstrength.repositories.WorkoutExerciseRepo;
 import com.example.startingstrength.repositories.WorkoutRepo;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkoutExerciseService {
@@ -32,6 +34,7 @@ public class WorkoutExerciseService {
     private WorkoutExerciseResponse toResponse(WorkoutExercise workoutExercise) {
         WorkoutExerciseResponse response = new WorkoutExerciseResponse();
         response.setId(workoutExercise.getWorkoutExerciseId());
+        response.setExerciseId(workoutExercise.getExercise().getId());
         response.setExerciseName(workoutExercise.getExercise().getName());
         response.setSets(workoutExercise.getSets());
         response.setReps(workoutExercise.getReps());
@@ -88,10 +91,19 @@ public class WorkoutExerciseService {
                 .toList();
     }
 
+    private String currentUsername() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
     public List<WorkoutExerciseResponse> getProgressForExercise(Long exerciseId) {
-        return workoutExerciseRepo.findByExerciseIdOrderByDate(exerciseId)
+        return workoutExerciseRepo.findByExerciseIdAndUsernameOrderByDate(exerciseId, currentUsername())
                 .stream()
                 .map(this::toResponse)
                 .toList();
+    }
+
+    public Optional<WorkoutExerciseResponse> getLastSessionForExercise(Long exerciseId) {
+        return workoutExerciseRepo.findLastByExerciseIdAndUsername(exerciseId, currentUsername())
+                .map(this::toResponse);
     }
 }

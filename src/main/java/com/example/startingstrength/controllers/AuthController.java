@@ -43,4 +43,14 @@ public class AuthController {
         String token = jwtUtil.generateToken(authentication.getName());
         return ResponseEntity.ok(token);
     }
+
+    @PutMapping("/change-password")
+    public ResponseEntity<String> changePassword(@RequestBody Map<String, String> request) {
+        try {
+            userService.changePassword(request.get("currentPassword"), request.get("newPassword"));
+            return ResponseEntity.ok("Password updated");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

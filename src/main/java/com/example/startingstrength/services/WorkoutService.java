@@ -8,6 +8,7 @@ import com.example.startingstrength.repositories.WorkoutRepo;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -43,6 +44,37 @@ public class WorkoutService {
 
     public void deleteWorkout(Long id) {
         workoutRepository.deleteById(id);
+    }
+
+    public String exportCsv(LocalDate startDate, LocalDate endDate) {
+        List<Workout> workouts = workoutRepository.findByUserUsernameAndDateBetweenOrderByDateAsc(
+                getCurrentUser().getUsername(), startDate, endDate);
+
+        StringBuilder csv = new StringBuilder("Date,Workout,Exercise,Sets,Reps,Weight (lbs)\n");
+        for (Workout w : workouts) {
+            if (w.getWorkoutExercises() == null || w.getWorkoutExercises().isEmpty()) {
+                csv.append(String.format("%s,%s,,,, \n", w.getDate(), escapeCsv(w.getName())));
+            } else {
+                for (var we : w.getWorkoutExercises()) {
+                    csv.append(String.format("%s,%s,%s,%s,%s,%s\n",
+                            w.getDate(),
+                            escapeCsv(w.getName()),
+                            escapeCsv(we.getExercise().getName()),
+                            we.getSets() != null ? we.getSets() : "",
+                            we.getReps() != null ? we.getReps() : "",
+                            we.getWeight() != null ? we.getWeight() : ""));
+                }
+            }
+        }
+        return csv.toString();
+    }
+
+    private String escapeCsv(String value) {
+        if (value == null) return "";
+        if (value.contains(",") || value.contains("\"") || value.contains("\n")) {
+            return "\"" + value.replace("\"", "\"\"") + "\"";
+        }
+        return value;
     }
 
     public Workout updateWorkout(Long id, Workout updatedWorkout) {
