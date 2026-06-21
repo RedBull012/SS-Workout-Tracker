@@ -94,4 +94,4 @@ This app is deployed on **Railway**. Environment variables are configured in the
 
 ## Frontend
 
-The React frontend for this project lives at [StartingStrengthFrontend](https://github.com/yourusername/StartingStrengthFrontend) and is deployed on Vercel.
+The React frontend for this project lives at [StartingStrengthFrontend](https://github.com/RedBull012/starting-strength-ui) and is deployed on Vercel.
