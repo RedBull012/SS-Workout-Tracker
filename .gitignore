@@ -8,6 +8,7 @@ target/
 .env
 src/main/resources/application.properties
 .claude
+.gitignore
 
 ### STS ###
 .apt_generated
